@@ -20,7 +20,10 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "googleServicesFile": "./google-services.json",
+        "package": "com.react.zerka",
+        "googleMapsApiKey": "AIzaSyDUnLALErTvL1mdyOJs6i9m_xN2dBM8yEU"
       }
     },
     "web": {
