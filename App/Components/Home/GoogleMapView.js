@@ -1,27 +1,42 @@
 import { View, Text,Dimensions } from 'react-native'
-import React, { useState } from 'react'
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import React, { useContext, useEffect, useState } from 'react'
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import { UserLocationContext } from '../../Context/UserLocationContext';
 
 export default function GoogleMapView() {
 
-    const [mapRegion, setmapRegion] = useState({
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0522,
-        longitudeDelta: 0.0421,
-    });
+    const [mapRegion, setmapRegion] = useState([]);
 
-    
+    const {location,setLocation}=useContext(UserLocationContext);
+
+    useEffect(() => {
+        if(location)
+        {
+            setmapRegion({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+                latitudeDelta: 0.0322,
+                longitudeDelta: 0.0421,
+            })
+        }
+    },[])
 
   return (
     <View style={{
     marginTop: 20,
+    }}>
+
+    <Text style={{fontSize:20, marginBottom: 10, fontWeight:'600',}}>
+        Top Near By Places
+    </Text>
+
+    <View style={{
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    overflow: 'hidden',
-    }}>
+    overflow: 'hidden',}}>
+
        <MapView style={{
         width:Dimensions.get('screen').width*0.9,
         height:Dimensions.get('screen').height*0.23,
@@ -31,8 +46,16 @@ export default function GoogleMapView() {
        showsUserLocation={true}
        region={mapRegion}
        >
+       
+       
+       <Marker 
+       title='You'
+       coordinate={mapRegion}
+       />
+
 
        </MapView>
+       </View>
     </View>
   )
 }
