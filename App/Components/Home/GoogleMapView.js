@@ -26,7 +26,7 @@ export default function GoogleMapView() {
     marginTop: 20,
     }}>
 
-    <Text style={{fontSize:20, marginBottom: 10, fontWeight:'600',}}>
+    <Text style={{fontSize:20, marginBottom: 10, fontWeight:'600',fontFamily:'raleway-bold'}}>
         Top Near By Places
     </Text>
 
@@ -48,10 +48,7 @@ export default function GoogleMapView() {
        >
        
        
-       <Marker 
-       title='You'
-       coordinate={mapRegion}
-       />
+      
 
 
        </MapView>
